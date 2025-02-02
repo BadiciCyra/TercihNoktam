@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÜniCepte - TercihChat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">ÜniCepte</div>
+        <div class="search-box">
+          <input type="text" placeholder="Üniversite, @bilgi, kişi, konu">
+          <button>&times;</button>
+        </div>
+        <div class="auth-buttons">
+          <a href="#" class="sign-in">Giriş Yap</a>
+          <a href="#" class="sign-up">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">TercihChat</div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message1 bot">
+                <div class="chat-logo-container">
+                    <img src="resim/unicepteLogo.jpg" class="chat-logo">
+                </div>
+                <div class="message-text">Merhaba! Size nasıl yardımcı olabilirim?</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <textarea id="chatInput" placeholder="Bir mesaj yaz..." rows="1"></textarea>
+            <button id="sendMessage">Gönder</button>
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("chatInput");
+            let message = input.value.trim();
+            if (!message) return;
+
+            let chatBox = document.getElementById("chatMessages");
+
+            // Kullanıcı mesajını ekle
+            let userMessage = document.createElement("div");
+            userMessage.className = "message1 user";
+            userMessage.innerHTML = `<div class="message-text">${message}</div>`;
+            chatBox.appendChild(userMessage);
+
+            input.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Flask API'ye mesajı gönder
+            let response = await fetch("/AIChat.html", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt: message })
+            });
+
+            let data = await response.json();
+
+            // Flask'ten gelen bot cevabını ekle
+            let botMessage = document.createElement("div");
+            botMessage.className = "message1 bot";
+            botMessage.innerHTML = `<div class="message-text">${data.recommendation}</div>`;
+            chatBox.appendChild(botMessage);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        document.getElementById("sendMessage").addEventListener("click", sendMessage);
+        document.getElementById("chatInput").addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.ctrlKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

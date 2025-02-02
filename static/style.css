@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100px;
+    width: 100%;
+    background-color: #a8d0db;
+    border-bottom: 2px solid #a8d0db;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 500;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 40px;
+    background-color: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 9999px;
+    padding: 0 16px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: #a0a0a0;
+}
+
+.search-box button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #a0a0a0;
+    cursor: pointer;
+}
+
+/* Authentication Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-buttons .sign-in {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.auth-buttons .sign-up {
+    background-color: #c7ebc3;
+    color: #ffffff;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.auth-buttons a:hover {
+    opacity: 0.5;
+}
+
+.auth-buttons .sign-up:hover {
+    background-color: transparent;
+    border: 2px solid #c7ebc3;
+    border-radius: 20px;
+}
+
+/* Sidenav */
+#mySidenav a {
+    position: fixed; /* Menü sabitleniyor */
+    left: -150px;
+    transition: 0.3s;
+    padding: 15px;
+    padding-left: 20px;
+    width: 180px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    border-radius: 0 50px 50px 0;
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+/* Aktif menü öğesi için özel stil */
+#mySidenav a.active {
+    left: 0 !important; /* Aktif öğe her zaman görünür olsun */
+}
+
+
+#about {
+    top: 150px;
+    background-color: #FAF3DD;
+    border: 2px solid black;
+}
+
+#blog {
+    top: 260px;
+    background-color: #FAF3DD;
+    border: 2px solid black;
+}
+
+#projects {
+    top: 370px;
+    background-color: #FAF3DD;
+    border: 2px solid black;
+}
+
+#contact {
+    top: 480px;
+    background-color: #FAF3DD;
+    border: 2px solid black;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Logo ve Menü Toggle arasındaki boşluk */
+}
+.menu-btn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: 0.3s;
+    display: none;
+    flex-direction: column;
+}
+
+.menu-btn:hover {
+    opacity: 0.7;
+}
+
+/* OVERLAY MENU */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(168, 208, 219, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+}
+
+.overlay.open {
+    transform: translateY(0);
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff6b6b;
+}
+
+/* OVERLAY MENU */
+.overlay-menu {
+    list-style: none;
+    text-align: center;
+}
+
+.overlay-menu li {
+    margin: 20px 0;
+}
+
+.overlay-menu a {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.overlay-menu a:hover {
+    background-color: #c7ebc3;
+    border-radius: 10px;
+}
+
+
+/* Card */
+.card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+    width: 800px;
+    background: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    margin: 20px auto;
+}
+
+/* Card Title */
+.card-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #333;
+    margin: 0;
+}
+
+/* Card Subtitle */
+.card-subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+    margin: 0;
+}
+
+/* Card Button */
+.card-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    background: #B7E4C7;
+    border: 1px solid #B7E4C7;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: #95d5b2;
+    transform: scale(1.02);
+}
+
+.card-container {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    left: auto;
+    width: 325px;
+    background: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: grab;
+}
+
+.card-container:active {
+    cursor: grabbing;
+}
+
+/* Kart Ayarları */
+.card2 {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Kart Başlık */
+.card-title2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+/* Kart Açıklama */
+.card-text2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #757575;
+    margin: 8px 0 0;
+}
+
+/* Ayar İkonu */
+.settings-icon2 {
+    font-size: 20px;
+    color: #757575;
+    margin-left: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;    
+}
+
+.settings-icon2:hover {
+    transform: rotate(90deg);
+}
+
+
+/*projects*/
+.chat-container {
+    position: relative;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    background: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    gap: 24px;
+    margin-top: auto;
+}
+
+.chat-header {
+    background: #a8d0db;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 16px 16px 0 0;
+}
+
+.chat-messages {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.chat-logo-container {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+}
+
+.chat-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.message-text {
+    background: #B7E4C7;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+    white-space: pre-wrap;
+}
+
+.message1.user {
+    flex-direction: row-reverse;
+}
+
+.message1.user .message-text {
+    background: #c7ebc3;
+    align-self: flex-end;
+}
+
+.message1.user .chat-logo-container {
+    margin-left: 12px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #D9D9D9;
+}
+
+.chat-input textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+}
+
+.chat-input button {
+    background: #a8d0db;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    margin-left: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*blog*/
+.myside {
+    position: relative;
+    top:-50px;
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: auto;
+}
+.card3 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+    width: 800px;
+    background: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    margin: 50px auto;
+    width: 100%;
+    background: #FAF3DD;
+    border: 1px solid #D9D9D9;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+.card-subtitle {
+    font-size: 14px;
+    color: #555;
+}
+.tags1 {
+    display: flex;
+    gap: 24px;
+    margin-top: 10px;
+}
+.tag1 {
+    background-color: #c7ebc3;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.tag11 {
+    background-color: #c7ebc3;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pagination-container {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.pagination1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pagination1 a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #333;
+    transition: background 0.3s;
+}
+.pagination1 a:hover {
+    background: #a8d0db;
+    color: white;
+}
+.pagination1 .active {
+    background: #FAF3DD;
+    font-weight: bold;
+    border: 2px solid #a8d0db;
+}
+
+/* Sabit Buton */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #FAF3DD;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.floating-button svg {
+    width: 30px;
+    height: 30px;
+    fill: #6c757d;
+}
+
+/* Sabit Profil Butonu */
+.profile-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+.profile-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #FAF3DD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.profile-image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.profile-button {
+    font-family: 'Newsreader', serif;
+    background: #FAF3DD;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    cursor: pointer;
+}
+.profile-button span {
+    font-size: 16px;
+    color: #333;
+}
+
+/*yatay menu*/
+/* Menü Ana Kapsayıcı */
+.horizontal-menu {
+    display:none;
+    width: 100%;
+    overflow-x: auto; /* Yatay kaydırmayı aç */
+    white-space: nowrap; /* Elemanların alt alta gelmesini engelle */
+    background: #f8f8f8;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Menü İçeriği */
+.menu-scroll {
+    display: flex;
+    gap: 15px; /* Başlıklar arası mesafe */
+    padding: 5px 15px;
+}
+
+/* Başlık Elemanları */
+.menu-item {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item:hover {
+    background: #ddd;
+}
+
+
+
+
+/*repsonsive*/
+@media screen and (max-width: 1024px) {
+    .search-box {
+        width: 600px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        display: none;
+    }
+    .horizontal-menu{
+        display: block;
+    }
+    .sidenav {
+        display: none;
+    }
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .auth-buttons {
+        margin-top: 10px;
+    }
+
+    .menu-btn {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card-container {
+        display: none;
+    }
+    .horizontal-menu{
+        display: block;
+    }
+    .sidenav {
+        display: none;
+    }
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .auth-buttons a {
+        text-align: center;
+        width: 100%;
+    }
+}

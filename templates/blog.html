@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSkt0ImxndEEiwyQuivzIIBZCuTwKFyG05K+M9I1wK4" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">ÜniCepte</div>
+        <div class="search-box">
+            <input type="text" placeholder="Üniversite, @bilgi, kişi, konu">
+            <button>&times;</button>
+        </div>
+        <div class="auth-buttons">
+            <a href="#" class="sign-in">Sign In</a>
+            <a href="#" class="sign-up">Sign Up</a>
+        </div>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="index.html" id="about">Ana Sayfa</a>
+        <a href="ogrenci_formu.html" id="blog">Öğrenci Formu</a>
+        <a href="AIChat.html" id="projects">TercihChat</a>
+        <a href="contact.html" id="contact">Üni. Bilgi</a>
+    </div>
+
+    <div class="container my-5">
+        <form action="/ogrenci_formu.html" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Başlık</label>
+                <input type="text" name="topic" class="form-control" id="title" oninput="updatePreview()">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Açıklama</label>
+                <textarea name="description" class="form-control" id="description" oninput="updatePreview()"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Önizleme</h6>
+            <div class="d-flex text-body-secondary pt-3">
+                <p class="pb-3 mb-0 small lh-sm border-bottom">
+                    <strong class="d-block text-gray-dark" id="preview-title">Başlık buraya gelecek</strong> 
+                    <span id="preview-description">Açıklama buraya gelecek</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Son Gönderiler</h6>
+            <div id="topics-container">
+                {% for item in topics %}
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/topic/{{item.id}}">{{ item.id }}. {{ item.topic }}</a></h5>
+                        <p class="card-text">{{ item.description }}</p>
+                        <form action="/delete/{{item.id}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Sil</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updatePreview() {
+            document.getElementById("preview-title").textContent = document.getElementById("title").value || "Başlık buraya gelecek";
+            document.getElementById("preview-description").textContent = document.getElementById("description").value || "Açıklama buraya gelecek";
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
